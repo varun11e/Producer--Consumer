@@ -6,8 +6,8 @@ services:
     image: rabbitmq:3-management
     container_name: rabbitmq
     ports:
-      - "5672:5672"     # AMQP port (used by your app)
-      - "15672:15672"   # Management UI (http://localhost:15672, guest/guest)
+      - "5672:5672"
+      - "15672:15672"
     restart: unless-stopped
 
   mongodb:
