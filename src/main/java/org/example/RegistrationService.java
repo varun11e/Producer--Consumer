@@ -38,14 +38,14 @@ public class RegistrationService {
 
     public static void unregisterProducer(String name) {
         MongoCollection<Document> producers = RegistrationMongoConfig.getProducersCollection();
-        producers.updateOne(Filters.eq("name", name), new Document("$set", new Document("status", "inactive")));
-        System.out.println("Producer unregistered: " + name);
+        producers.deleteOne(Filters.eq("name", name));
+        System.out.println("Producer deleted: " + name);
     }
 
     public static void unregisterConsumer(String name) {
         MongoCollection<Document> consumers = RegistrationMongoConfig.getConsumersCollection();
-        consumers.updateOne(Filters.eq("name", name), new Document("$set", new Document("status", "inactive")));
-        System.out.println("Consumer unregistered: " + name);
+        consumers.deleteOne(Filters.eq("name", name));
+        System.out.println("Consumer deleted: " + name);
     }
 
     public static long getActiveProducerCount() {

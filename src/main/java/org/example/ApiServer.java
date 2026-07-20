@@ -25,13 +25,13 @@ public class ApiServer {
         }
     }
 
-    @PostMapping("/producers/unregister/{name}")
+    @DeleteMapping("/producers/unregister/{name}")
     public String unregisterProducer(@PathVariable String name) {
         RegistrationService.unregisterProducer(name);
         return "Producer unregistered: " + name;
     }
 
-    @PostMapping("/consumers/unregister/{name}")
+    @DeleteMapping ("/consumers/unregister/{name}")
     public String unregisterConsumer(@PathVariable String name) {
         RegistrationService.unregisterConsumer(name);
         return "Consumer unregistered: " + name;
