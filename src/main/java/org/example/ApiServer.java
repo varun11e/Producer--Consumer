@@ -5,21 +5,21 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class ApiServer {
 
-    @PostMapping("/producers/register/{name}")
-    public String registerProducer(@PathVariable String name) {
-        boolean success = RegistrationService.registerProducer(name);
+    @PostMapping("/producers/register/{name}/{label}")
+    public String registerProducer(@PathVariable String name, @PathVariable String label) {
+        boolean success = RegistrationService.registerProducer(name, label);
         if (success) {
-            return "Producer registered: " + name;
+            return "Producer registered: " + name + " (label: " + label + ")";
         } else {
             return "Producer name already exists: " + name;
         }
     }
 
-    @PostMapping("/consumers/register/{name}")
-    public String registerConsumer(@PathVariable String name) {
-        boolean success = RegistrationService.registerConsumer(name);
+    @PostMapping("/consumers/register/{name}/{label}/{quantity}")
+    public String registerConsumer(@PathVariable String name, @PathVariable String label, @PathVariable int quantity) {
+        boolean success = RegistrationService.registerConsumer(name, label, quantity);
         if (success) {
-            return "Consumer registered: " + name;
+            return "Consumer registered: " + name + " (label: " + label + ", needs: " + quantity + ")";
         } else {
             return "Consumer name already exists: " + name;
         }
@@ -29,12 +29,6 @@ public class ApiServer {
     public String unregisterProducer(@PathVariable String name) {
         RegistrationService.unregisterProducer(name);
         return "Producer unregistered: " + name;
-    }
-
-    @DeleteMapping ("/consumers/unregister/{name}")
-    public String unregisterConsumer(@PathVariable String name) {
-        RegistrationService.unregisterConsumer(name);
-        return "Consumer unregistered: " + name;
     }
 
     @GetMapping("/count/producers")
