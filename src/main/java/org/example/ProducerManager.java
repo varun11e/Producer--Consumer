@@ -11,7 +11,6 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class ProducerManager {
-
     private static final Map<String, LabeledProducer> producers = new ConcurrentHashMap<>();
     private static final Map<String, ScheduledFuture<?>> scheduledTasks = new ConcurrentHashMap<>();
     private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(10);

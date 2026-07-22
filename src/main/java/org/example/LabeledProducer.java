@@ -23,7 +23,6 @@ public class LabeledProducer {
         channel = connection.createChannel();
         channel.queueDeclare(label, true, false, false, null);
     }
-
     public void produceOnce() {
         try {
             String message = label + "-item-" + counter;

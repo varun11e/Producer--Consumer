@@ -113,4 +113,5 @@ public class RegistrationService {
     public static boolean isMyTurn(String consumerName, String label) {
         return consumerName.equals(activeConsumerPerLabel.get(label));
     }
+
 }

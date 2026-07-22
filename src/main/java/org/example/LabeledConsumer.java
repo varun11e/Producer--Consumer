@@ -57,7 +57,6 @@ public class LabeledConsumer {
 
         return false;
     }
-
     public void shutdown() {
         try {
             if (channel != null) channel.close();

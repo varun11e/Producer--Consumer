@@ -24,7 +24,6 @@ public class ApiServer {
             return "Consumer name already exists: " + name;
         }
     }
-
     @DeleteMapping("/producers/unregister/{name}")
     public String unregisterProducer(@PathVariable String name) {
         RegistrationService.unregisterProducer(name);

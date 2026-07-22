@@ -31,7 +31,6 @@ public class ConsumerManager {
             }, 0, 1, TimeUnit.MILLISECONDS);
 
             scheduledTasks.put(name, task);
-
             log.info("Started consumer schedule for: {} (label: {}, needs: {})", name, label, quantity);
         } catch (Exception e) {
             log.error("Failed to start consumer {}: {}", name, e.getMessage());
