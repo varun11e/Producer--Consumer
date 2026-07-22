@@ -28,7 +28,7 @@ public class ConsumerManager {
                         selfTask.cancel(false);
                     }
                 }
-            }, 0, 500, TimeUnit.MILLISECONDS);
+            }, 0, 1, TimeUnit.MILLISECONDS);
 
             scheduledTasks.put(name, task);
 

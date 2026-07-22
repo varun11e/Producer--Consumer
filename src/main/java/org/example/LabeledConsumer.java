@@ -5,6 +5,7 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.GetResponse;
 import lombok.extern.slf4j.Slf4j;
 
+
 @Slf4j
 public class LabeledConsumer {
 
