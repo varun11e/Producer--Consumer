@@ -1,13 +1,17 @@
 package org.example;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class ApiServer {
+@RequiredArgsConstructor
+public class ProdConController {
+
+    private final RegistrationService registrationSvc;
 
     @PostMapping("/producers/register/{name}/{label}")
     public String registerProducer(@PathVariable String name, @PathVariable String label) {
-        boolean success = RegistrationService.registerProducer(name, label);
+        boolean success = registrationSvc.registerProducer(name, label);
         if (success) {
             return "Producer registered: " + name + " (label: " + label + ")";
         } else {

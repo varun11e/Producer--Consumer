@@ -4,18 +4,20 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.model.Filters;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.Document;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 @Slf4j
+@Service
 public class RegistrationService {
 
     private static final Map<String, String> activeConsumerPerLabel = new ConcurrentHashMap<>();
     private static final Map<String, ConcurrentLinkedQueue<String>> waitingConsumersPerLabel = new ConcurrentHashMap<>();
 
-    public static boolean registerProducer(String name, String label) {
+    public boolean registerProducer(String name, String label) {
         MongoCollection<Document> producers = RegistrationMongoConfig.getProducersCollection();
 
         Document existing = producers.find(Filters.eq("name", name)).first();
